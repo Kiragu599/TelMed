@@ -65,6 +65,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.dennis.telmed.R
+import com.dennis.telmed.navigation.ROUTE_PAYMENT
+import com.dennis.telmed.navigation.ROUTE_WHATSAPP
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -96,29 +99,26 @@ fun DoctorProfileScreen(navController: NavController) {
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 Button(
-                    onClick = { /* Handle video call */ },
+                    onClick = {
+                        navController.navigate(ROUTE_WHATSAPP)
+                    },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.primary,
                         contentColor = Color.White
                     ),
                     modifier = Modifier.weight(1f)
                 ) {
-//                    Icon(Icons.Default.VideoCall, contentDescription = "Video Call")
+                    Icon(Icons.Default.VideoCall, contentDescription = "Video Call")
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text("Video Call")
+                    Text("Consult",
+                        fontSize = 20.sp)
                 }
 
                 Spacer(modifier = Modifier.width(16.dp))
 
                 Button(
                     onClick = {
-                        val uri = Uri.parse("smsto:0790599550")
-
-                        val intent = Intent(Intent.ACTION_SENDTO, uri)
-
-                        intent.putExtra("Hello", "How is todays weather")
-
-                        context.startActivity(intent)
+                        navController.navigate(ROUTE_PAYMENT)
                     },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.secondary,
@@ -128,7 +128,7 @@ fun DoctorProfileScreen(navController: NavController) {
                 ) {
 //                    Icon(Icons.Default.Chat, contentDescription = "Message")
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text("Message")
+                    Text("Pay")
                 }
             }
         }
@@ -142,7 +142,7 @@ fun DoctorProfileScreen(navController: NavController) {
             item {
                 // Doctor Header Section
                 DoctorHeaderSection(
-                    name = "Dr.Dennis Mwangi",
+                    name = "Dr.Johnson Rupert",
                     specialty = "Cardiologist",
                     rating = 4.8,
                     reviews = 124,
@@ -159,9 +159,9 @@ fun DoctorProfileScreen(navController: NavController) {
 
                 // About Doctor Section
                 AboutDoctorSection(
-                    description = "Dr.Dennis Mwangi is a board-certified cardiologist with over 12 years of experience. " +
+                    description = "Dr.Johnson is a board-certified cardiologist with over 12 years of experience. " +
                             "He specializes in preventive cardiology and heart disease management. " +
-                            "Dr.Mwangi completed his residency at Aghakan Hospital."
+                            "Dr.Johnson completed his residency at Aghakan Hospital."
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -193,7 +193,7 @@ fun DoctorProfileScreen(navController: NavController) {
                     rating = 4.8,
                     reviewCount = 124,
                     reviews = listOf(
-                        Review("Ms Okoth", "2 days ago", 5, "Dr.Dennis Mwangi was very thorough and took time to explain everything."),
+                        Review("Ms Okoth", "2 days ago", 5, "Dr.Johnson was very thorough and took time to explain everything."),
                         Review("Mr.Erick", "1 week ago", 4, "Great consultation, but had to wait 10 minutes past my appointment time.")
                     )
                 )
@@ -218,15 +218,15 @@ fun DoctorHeaderSection(
         verticalAlignment = Alignment.CenterVertically
     ) {
         // Doctor Image
-//        Image(
-//            painter = painterResource(id = R.drawable.telmed1), // Replace with your image resource
-//            contentDescription = "Doctor $name",
-//            contentScale = ContentScale.Crop,
-//            modifier = Modifier
-//                .size(100.dp)
-//                .clip(CircleShape)
-//                .border(2.dp, MaterialTheme.colorScheme.primary, CircleShape)
-//        )
+        Image(
+            painter = painterResource(id = R.drawable.doctot), // Replace with your image resource
+            contentDescription = "Doctor $name",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .size(100.dp)
+                .clip(CircleShape)
+                .border(2.dp, MaterialTheme.colorScheme.primary, CircleShape)
+        )
 
         Spacer(modifier = Modifier.width(16.dp))
 
@@ -265,6 +265,16 @@ fun DoctorHeaderSection(
             }
         }
 
+
+
+
+
+
+
+
+
+
+
         // Favorite Button
         IconButton(onClick = onFavoriteClick) {
             Icon(
@@ -296,7 +306,7 @@ fun ConsultationOptions() {
             ConsultationOptionItem(
                 icon = Icons.Default.VideoCall,
                 title = "Video Consultation",
-                price = "$60",
+                price = "Ksh.1500",
                 duration = "30 min"
             )
 
@@ -305,7 +315,7 @@ fun ConsultationOptions() {
             ConsultationOptionItem(
                 icon = Icons.Default.Call,
                 title = "Voice Call",
-                price = "$45",
+                price = "Ksh.1000",
                 duration = "20 min"
             )
 
@@ -314,7 +324,7 @@ fun ConsultationOptions() {
             ConsultationOptionItem(
                 icon = Icons.Default.Chat,
                 title = "Chat Consultation",
-                price = "$30",
+                price = "Ksh.500",
                 duration = "24h response"
             )
         }

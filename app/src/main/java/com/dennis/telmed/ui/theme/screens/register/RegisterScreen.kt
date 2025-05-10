@@ -49,7 +49,7 @@ fun RegisterScreen(navController:NavHostController) {
     var context= LocalContext.current
     Column(modifier = Modifier
         .fillMaxSize()
-        .background(Color.Black),
+        .background(Color.White),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center) {
 
@@ -62,7 +62,7 @@ fun RegisterScreen(navController:NavHostController) {
         OutlinedTextField(
             value = email, onValueChange = { email = it },
             label = { Text(text = "Enter Email",
-                color = Color.White,
+                color = Color.Black,
                 fontWeight = FontWeight.ExtraBold) },
 
             keyboardOptions = KeyboardOptions . Default . copy (imeAction = ImeAction.Next),
@@ -77,7 +77,7 @@ fun RegisterScreen(navController:NavHostController) {
 
         OutlinedTextField(value =pass , onValueChange = {pass=it},
             label = { Text(text = "Enter password",
-                color = Color.White,
+                color = Color.Black,
                 fontWeight = FontWeight.ExtraBold) },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
             modifier = Modifier
@@ -90,7 +90,7 @@ fun RegisterScreen(navController:NavHostController) {
         OutlinedTextField(value =confirmpass , onValueChange = {
             confirmpass=it},
             label = { Text(text = "Confirm Password",
-                color = Color.White,
+                color = Color.Black,
                 fontWeight = FontWeight.ExtraBold) },
 
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),

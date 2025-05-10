@@ -60,6 +60,7 @@ dependencies {
     implementation(libs.androidx.material.icons.extended)
 
 //Agora sdk
+    implementation(libs.full.sdk.v423)
     implementation (libs.full.sdk)
 
 
@@ -73,6 +74,10 @@ dependencies {
     implementation(libs.full.sdk.v421)
 
 
+    implementation(libs.coil.compose)
+
+//Material 3
+    implementation(libs.androidx.material3.v120alpha03)
 
 
 
